@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Graph</title>
+<!-- <link rel = "stylesheet" href = "/Users/Steven/Documents/workspace/Database/Website/Views.css"> -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+	<div id="myDiv" >
+	<!-- Plotly chart will be drawn inside this DIV --></div>
+<!--  	<div id="myDiv2" style="width: 480px; height: 400px; margin-left:auto;
+	margin-right:auto;
+	"></div>
+ -->
+		<script>
+		function makeplot() {
+			  Plotly.d3.csv("database1.csv", 
+					  function(data)
+					  { processData(data) } );
+			  
+
+			};
+			
+			function processData(allRows) {
+
+		//	  console.log(allRows);
+			  var v = [], w = [], x = [], y = [], z = [];
+
+			  for (var i=0; i<allRows.length; i++) {
+			    row = allRows[i];
+			    v.push( row ['Sample_ID'])
+			    w.push( row ['Set_Type']);
+			    x.push(i);
+			    y.push( row['probability'] );
+			    z.push( row['ACR_Class']);
+			  }
+			console.log(v);
+			  makePlotly(v, w, x, y, z );
+			}
+			function makePlotly(v, w,x, y, z ){
+			  var plotDiv = document.getElementById("plot");
+			  var traces = [{"autobinx": true, "uid": "7128dc","showlegend": false, "ysrc": "Stevennn:22:b0e2cf", "xsrc":
+				  "Stevennn:22:465db9", "mode": "markers", "marker": 
+				  {"colorsrc": "Stevennn:22:81a579", "autocolorscale": false, "cmin": 0,
+					  "colorscale": [[0, "rgb(0, 0, 155)"], [0.35, "rgb(0, 108, 255)"], 
+						  [0.5, "rgb(98, 255, 146)"], [0.6, "rgb(255, 147, 0)"], [0.7, "rgb(255, 47, 0)"],
+						  [1, "rgb(216, 0, 0)"]], "color": z, "cauto": true, "cmax": 1},"textsrc": 
+							  "Stevennn:22:ecf8cd", "text": v, "y": y, "x" : x, "autobiny": true, "type":
+								  "scatter"},{				  
+			  "autobinx": true, "uid": "92deb3","showlegend": false, "ysrc": "Stevennn:22:b0e2cf",
+			  "xsrc": "Stevennn:22:465db9", "mode": "markers", "marker": 
+			  {"colorsrc": "Stevennn:22:81a579", "autocolorscale": false, "sizeref": 0.00125,
+				  "colorscale": [[0, "rgb(220,220,220)"], [0.2, "rgb(245,195,157)"], 
+					  [0.4, "rgb(245,160,105)"], [1, "rgb(178,10,28)"]], "color": z,
+					  "sizemode": "area", "cauto": true, "sizesrc": "Stevennn:22:0cd4fe",
+					  "cmax": 1, "cmin": 0, "size":w}, "textsrc": "Stevennn:22:ecf8cd", 
+					  "text": v, "y": y, "x": x, hoverinfo: 'skip', "autobiny": true, "type": "scatter"}];
+			  
+			var layout = {"autosize": true, "yaxis": {"range": [-0.0596865179879518, 1.0300757559879516], "type": "linear", "autorange": true, "title": "Probability"}, "showlegend": false, "breakpoints": [], "xaxis": {"range": [-6.069626639757822, 121.06962663975783], "type": "linear", "autorange": true, "title": "Sample_ID"}, "hovermode": "closest", title: "Sample ID vs Probability with Acute Rejection"};	  
+					
+				  
+			  
+			  Plotly.plot('myDiv', traces,
+			    layout
+			    );
+			 
+			};
+			  makeplot();	
+		</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Graph</title>
+<!-- <link rel = "stylesheet" href = "/Users/Steven/Documents/workspace/Database/Website/Views.css"> -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+	<div id="myDiv" >
+	<!-- Plotly chart will be drawn inside this DIV --></div>
+<!--  	<div id="myDiv2" style="width: 480px; height: 400px; margin-left:auto;
+	margin-right:auto;
+	"></div>
+ -->
+		<script>
+		function makeplot() {
+			  Plotly.d3.csv("/Users/Steven/database.csv", 
+					  function(data)
+					  { processData(data) } );
+			  
+
+			};
+			
+			function processData(allRows) {
+
+			var a = [], b = [], c = [], d = [], e = [], f = [], g = [], h = [], i = [], j = [], k = [], l = [], m = [], n = [], o = [], p = [], q = [],y = [], z = [];
+			
+
+			  for (var i=0; i<allRows.length; i++) {
+			    row = allRows[i];
+			    a.push(row['ANXA5Median']);
+			    b.push(row['AP1M1Median']);
+			    c.push(row['C1GALT1C1Median']);
+			    d.push(row['CLK1Median']);
+			    e.push(row['EFTUD2Median']);
+			    f.push(row['MAP1AMedian']);
+			    g.push(row['SENP6Median']);
+			    h.push(row['SENP7Median']);
+			    i.push(row['TSC22D1Median']);
+			    j.push(row['SPCS3Median']);
+			    k.push(row['ZMAT1Median']);
+			    l.push(row['ETAA1Median']);
+			    m.push(row['ZNF493Median']);
+			    n.push(row['CCDC82Median']);
+			    o.push(row['NFYBMedian']);
+			    p.push(row['F13A1Median']);
+			    q.push(row['TUBB1Median']);			
+			    y.push(row['Sample_ID']);
+			  } 
+				
+			  /*for (var i2 = 0; i2 < allRows.length; i2++){
+				  var z1 = [];
+				  z1.push(a[i2]);
+				  z1.push(b[i2]);
+				  z1.push(c[i2]);
+				  z1.push(d[i2]);
+				  z1.push(e[i2]);
+				  z1.push(f[i2]);
+				  z1.push(g[i2]);
+				  z1.push(h[i2]);
+				  z1.push(i[i2]);
+				  z1.push(j[i2]);
+				  z1.push(k[i2]);
+				  z1.push(l[i2]);
+				  z1.push(m[i2]);
+				  z1.push(n[i2]);
+				  z1.push(o[i2]);
+				  z1.push(p[i2]);
+				  z1.push(q[i2]);
+				  z.concat(z1);	
+			  } */
+			  makePlotly(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,y);
+			} 
+			function makePlotly(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,y){
+
+			  var plotDiv = document.getElementById("plot");
+		 //var traces = [{"autocolorscale": false, "autobiny": true, "zmax": 3.793355094, "xtype": "array", "colorscale": [[0, "rgb(0,100,0)"], [0.35, "rgb(0,100,0)"], [0.5, "rgb(0,100,0)"], [0.6, "rgb(178,34,34)"], [0.7, "rgb(178,34,34)"], [1, "rgb(178,34,34)"]], "zsrc": "Stevennn:24:7c5b03,d13911,d67531,5f824f,b18fc2,9a5a2c,6e4bcc,820fad,0c074d,cd2bce,eee54f,968a8d,285700,0a7226,f7fb74,70689f,283a9a", "ysrc": "Stevennn:24:07afaf", "zmin": -6.330361204, "transpose": true, "xsrc": "Stevennn:24:ca95ba", "reversescale": false, "ytype": "array", "mode": "markers", "showscale": true, "y": x, "x" : y, "z" = z,  "type": "heatmap", "autobinx": true, "zauto": true, "name": "ANXA5Median"}];
+			 var traces = [{"autocolorscale": false, "autobiny": true, "zmax": 3.793355094, "xtype": "array", "colorscale": [[0, "rgb(0,100,0)"], [0.35, "rgb(0,100,0)"], [0.5, "rgb(0,100,0)"], [0.6, "rgb(178,34,34)"], [0.7, "rgb(178,34,34)"], [1, "rgb(178,34,34)"]], "zsrc": "Stevennn:24:7c5b03,d13911,d67531,5f824f,b18fc2,9a5a2c,6e4bcc,820fad,0c074d,cd2bce,eee54f,968a8d,285700,0a7226,f7fb74,70689f,283a9a", "ysrc": "Stevennn:24:07afaf", "zmin": -6.330361204, "transpose": true, "xsrc": "Stevennn:24:ca95ba", "reversescale": false, "ytype": "array", "mode": "markers", "showscale": true, "y": ["ANXA5", "AP1M1", "C1GALT1C1", "CLK1", "EFTUD2", "MAP1A", "SENP6", "SENP7", "TSC22D1", "SPCS3", "ZMAT1", "ETAA1", "ZNF493", "CCDC82", "NFYB", "F13A1", "TUBB1"], "x" : ["R.4597.13", "R.4417.7.20A1", "R.3577.7.20A1", "R.4300.7", "R.748.6", "R.5197.15.20A1", "R.4917.10.20A1", "R.3037.13.20A1", "R.1197.6", "R.3757.18.20A1", "R.1717.6", "R.3217.30.20A1", "R.3977.14", "R.545.14", "R.745.6.20A1", "R.3957.8.20A1", "R.3418.23.20A1", "R.264.23", "R.2997.7.20A1", "R.1998.7.20A1", "R.3437.18.20A1", "R.2957.45.R", "R.2797.7.20A1", "R.1937.6.20A1", "R.567.36", "R.4278.18", "R.2941.7.20A1", "R.4317.18.20A1", "R.4277.15", "R.4677.13.R", "R.3717.15.20A1", "R.2279.7.20A1", "R.2859.53.20A1", "R.306.13", "R.1677.20", "R.2917.7.20A1", "R.711.21.R", "R.1237.6.20A1", "R.261.13", "R.486.13", "R.5518.13.R", "R.4357.7.R", "R.552.13.20A1", "R.1417.9.20A1"], "z": ["0.182204836", "0.286119946", "0.345276115", "1.033592202", "-0.244196832", "-0.824868016", "0.610713209", "0.583521757", "-1.192770218", "1.327230766", "-0.401743064", "0.090580607", "0.058876944", "0.803987845", "0.335419208", "-0.688454271", "-1.134654458"], "type": "heatmap", "autobinx": true, "zauto": true, "name": "ANXA5Median"}];
+			  
+			var layout = {"autosize": true, "yaxis": {"range": [-0.5, 16.5], "type": "category", "autorange": true, "title": "Names"}, "showlegend": true, "breakpoints": [], "xaxis": {"range": [-0.5, 176.5], "type": "category", "autorange": true, "title": "Sample_ID"}, "hovermode": "closest"};	  
+					
+				  
+			  
+			  Plotly.plot('myDiv', traces,
+			    layout
+			    );
+			 
+			};
+			  makeplot();	 			 
+		</script>
+</body>
+</html>
